@@ -185,6 +185,7 @@ function showProfile(){
         
     });
 
+
     document.getElementById("profile-email").innerHTML = "Current email: " + email;
 }
 
@@ -328,13 +329,21 @@ function openAdminPanel() {
 */
 
 function openClassRegistration(){
+    var user = firebase.auth().currentUser;
+    var uid = user.uid;
 
     document.getElementById("hide-register-classes-btn").style.display="block";
     document.getElementById("register-classes-btn").style.display="none";
     document.getElementById("class-registration").style.display="block";
+    
+    document.getElementById("cost-1").innerHTML = "$0";
+    document.getElementById("cost-2").innerHTML = "$0";
+    document.getElementById("cost-3").innerHTML = "$0";
+    document.getElementById("cost-4").innerHTML = "$0";
+    document.getElementById("cost-5").innerHTML = "$0";
+    document.getElementById("cost-6").innerHTML = "$0";
+    document.getElementById("total-cost").innerHTML = "$0";
 
-    var user = firebase.auth().currentUser;
-    var uid = user.uid;
     var docRef = db.collection("users").doc(uid).collection("children");
     docRef.get().then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
@@ -639,11 +648,24 @@ function getCost(catgName, className) {
         totalCost += cost;
     })
 }
-/*
+
 function updateCost() {
+    var cost1 = parseInt(document.getElementById("cost-1").innerHTML.slice(1));
+    var cost2 = parseInt(document.getElementById("cost-2").innerHTML.slice(1));
+    var cost3 = parseInt(document.getElementById("cost-3").innerHTML.slice(1));
+    var cost4 = parseInt(document.getElementById("cost-4").innerHTML.slice(1));
+    var cost5 = parseInt(document.getElementById("cost-5").innerHTML.slice(1));
+    var cost6 = parseInt(document.getElementById("cost-6").innerHTML.slice(1));
+    var totalCost = cost1 + cost2 + cost3 + cost4 + cost5 + cost6;
+    document.getElementById("total-cost").innerHTML = "$" + totalCost;
+}
+
+
+function updateCostReal() {
+    var user = firebase.auth().currentUser;
+    var uid = user.uid;
     var catg1 = document.getElementById("choose-category-1").value;
     var class1 = document.getElementById("choose-class-1").value;
-    getCost(catg1, class1).then(printTotalCost);
     
     if (class1 !== "") {
         var costRef1 = db.collection("classes").doc(catg1).collection(catg1+"-classes-list").doc(class1);
@@ -721,9 +743,12 @@ function updateCost() {
             }
         })
     }
-    return totalCost;
+    console.log(totalCost);
+    db.collection("debt").doc(uid).set({
+        debt: totalCost.toString(10)
+    })
 }
-*/
+
 
 function updateChooseClass1() {
     let categoryChoice = document.getElementById("choose-category-1").value;
@@ -944,7 +969,7 @@ function updateClassSelection1() {
         //console.log("pog");
         document.getElementById("time-1").innerHTML = startTime + " - " + endTime;
         //document.getElementById("total-cost").innerHTML = "$" + totalCost;
-        //updateCost();
+        updateCost();
     })
 }
 
@@ -961,7 +986,7 @@ function updateClassSelection2() {
         //totalCost += parseInt(cost);
         document.getElementById("time-2").innerHTML = startTime + " - " + endTime;
         //document.getElementById("total-cost").innerHTML = "$" + totalCost;
-        //updateCost();
+        updateCost();
     })
 }
 
@@ -978,7 +1003,7 @@ function updateClassSelection3() {
         //totalCost += parseInt(cost);
         document.getElementById("time-3").innerHTML = startTime + " - " + endTime;
         //document.getElementById("total-cost").innerHTML = "$" + totalCost;
-        //updateCost();
+        updateCost();
     })
 }
 
@@ -995,7 +1020,7 @@ function updateClassSelection4() {
         //totalCost += parseInt(cost);
         document.getElementById("time-4").innerHTML = startTime + " - " + endTime;
         //document.getElementById("total-cost").innerHTML = "$" + totalCost;
-        //updateCost();
+        updateCost();
     })
 }
 
@@ -1012,7 +1037,7 @@ function updateClassSelection5() {
         //totalCost += parseInt(cost);
         document.getElementById("time-5").innerHTML = startTime + " - " + endTime;
         //document.getElementById("total-cost").innerHTML = "$" + totalCost;
-        //updateCost();
+        updateCost();
     })
 }
 
@@ -1029,7 +1054,7 @@ function updateClassSelection6() {
         //totalCost += parseInt(cost);
         document.getElementById("time-6").innerHTML = startTime + " - " + endTime;
         //document.getElementById("total-cost").innerHTML = "$" + totalCost;
-        //updateCost();
+        updateCost();
     })
 }
 
@@ -1039,26 +1064,10 @@ function submitClassRegistration() {
         window.alert("You pressed Cancel.")
         hideClassRegistration();
     } else {
-        var user = firebase.auth().currentUser;
-        var uid = user.uid;
         
-        var debtRef = db.collection("debt");
-        debtRef.get().then(function(doc) { 
-            if (doc.exists) {
-                let debtData = doc.data();
-            } else {
-                //else CREATE DOC 
-                db.collection("debt").doc(uid).set({
-                    debt: 0,
-                    uid: uid
-                })
-            }
-        }).catch(function(error) {
-            
-        });
-
         var user = firebase.auth().currentUser;
         var uid = user.uid;
+
         var childName = document.getElementById("student-to-register").value;
         let class1 = document.getElementById("choose-class-1").value;
         let catg1 = document.getElementById("choose-category-1").value;
@@ -1181,8 +1190,12 @@ function submitClassRegistration() {
         .catch(function(error) {
             console.log("Error recording classes: ", error);
         })
-    }
+
+        updateCostReal();
+    }   
 }
+
+    
 
 function addNewClass() {
     document.getElementById("add-new-class-btn").style.display = "none";
@@ -1418,7 +1431,7 @@ function updateClassFinder() {
                     cell2.innerHTML = parentName;
                     cell3.innerHTML = email;
                     cell4.innerHTML = phoneNum;
-                    console.log("a");
+                    //console.log("a");
                 })
             }
         })

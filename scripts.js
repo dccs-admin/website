@@ -34,6 +34,10 @@ adminForm.addEventListener('submit', (e) => {
     window.alert("Successfully added an admin!");
 });
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function signUp(){
 
     var email = document.getElementById("email");
@@ -199,7 +203,6 @@ function showChildren(){
     document.getElementById("hide-children-btn").style.display="block";
     document.getElementById("show-children-btn").style.display="none";
     document.getElementById("child-list").style.display="block";
-    var classString = "";
     var user = firebase.auth().currentUser;
     var uid = user.uid;
     var docRef = db.collection("users").doc(uid).collection("children");
@@ -217,6 +220,7 @@ function showChildren(){
             var cell3 = row.insertCell(2); //Gender
             var cell4 = row.insertCell(3); //Enrolled Classes
 
+            var classString = "";
             let class1 = docData["class1"];
             let catg1 = docData["catg1"];
             if (class1 !== "") {
@@ -666,6 +670,20 @@ function updateCostReal() {
     var uid = user.uid;
     var catg1 = document.getElementById("choose-category-1").value;
     var class1 = document.getElementById("choose-class-1").value;
+    var previousDebt = 0;
+
+    var debtRef = db.collection("debt").doc(uid);
+    debtRef.get().then(function(doc) {
+        if (doc.exists) {
+            var debtData = doc.data();
+            previousDebt = parseInt(debtData["debt"]);
+            console.log("previous debt:" + previousDebt);
+            db.collection("debt").doc(uid).delete();
+        } else {
+            previousDebt = 0;
+            console.log("previous debt:" + previousDebt);
+        }
+    })
     
     if (class1 !== "") {
         var costRef1 = db.collection("classes").doc(catg1).collection(catg1+"-classes-list").doc(class1);
@@ -739,13 +757,18 @@ function updateCostReal() {
                 let cost6data = doc.data();
                 let cost6 = parseInt(cost6data["classCost"]);
                 totalCost = totalCost + cost6;
+                var a = 1;
                 //console.log("f")
             }
         })
     }
-    console.log(totalCost);
-    db.collection("debt").doc(uid).set({
-        debt: totalCost.toString(10)
+    sleep(1000).then(() => {
+        totalCost = totalCost + previousDebt;
+        console.log(previousDebt);
+        console.log(totalCost);
+        db.collection("debt").doc(uid).set({
+            debt: totalCost.toString(10)
+        })
     })
 }
 

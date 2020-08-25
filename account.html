@@ -226,8 +226,61 @@
             <br>
 
 
+            
+
+            <button id="show-children-btn" style="display: none;" onclick="showChildren()" class="w3-btn w3-blue">Open Child List</button>
+            <button id="hide-children-btn" style="display: none;" onclick="hideChildren()" class="w3-btn w3-blue">Hide Child List</button> 
+            
+            <!-- Child List -->
+            <div id="child-list" style="display: none;">
+                <h3> Your Child List </h3>
+                <button id="add-new-child-btn" onclick="openChildDropdown()" class="w3-btn w3-blue"> Add New Child </button>
+                <button id="hide-new-child-btn" onclick="hideChildDropdown()" style="display: none;" class="w3-btn w3-blue"> Cancel </button>
+                
+                <!-- Add Child Dropdown --> 
+                <div id="add-child-dropdown" style="display: none;">
+                    <br>
+                    <b>Child's Full Name (FirstName LastName)</b><br>
+                    <input type="text" placeholder="Your Child's Full Name" id="add-child-name" required>
+                    <br><br> 
+                    <b>Child's Date of Birth</b><br>
+                    <input type="date" name="begin" placeholder="dd-mm-yyyy" value="" min="1900-01-01" max="2100-12-31" id="add-child-date-of-birth" required>
+                    <br><br>
+                    <b>Gender</b><br> 
+                    <label for="gender">Child's Gender:</label>
+                    <select name="gender" id="add-child-gender" required>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select> 
+                    <br><br>
+                    <button onclick="addChild()" class="w3-btn w3-blue">Submit</button>
+                </div>
+
+                <br>
+                <br>
+                <!--<input type="text" placeholder="Child ID" id="target-input">-->
+                <!--<button onclick="removeRow()"> Remove Child </button>-->
+                <br><br>
+                <table id="child-list-table"> 
+                    <tr>
+                        <th>Child Name</th>
+                        <th>Birth Date</th>
+                        <th>Gender</th> 
+                        <th>Enrolled Classes</th>
+                        <!-- <th>Previous Enrolled Classes</th> -->
+                    </tr> 
+                </table>
+            </div>
+            <!--
+            <div id="show-class-roster" style="display: none;">
+                
+            </div>
+            -->
+            <br>
             <button id="register-classes-btn" style="display: none;" onclick="openClassRegistration()" class="w3-btn w3-blue">Register For Classes</button>
             <button id="hide-register-classes-btn" onclick="hideClassRegistration()" style="display: none;" class="w3-btn w3-blue"> Cancel </button><br>
+        
 
             <!-- Class Registration -->
             <div id="class-registration" style="display: none;"> 
@@ -319,59 +372,8 @@
 
                 <br><br>
             </div> 
-            
-
-            <button id="show-children-btn" style="display: none;" onclick="showChildren()" class="w3-btn w3-blue">Open Child List</button>
-            <button id="hide-children-btn" style="display: none;" onclick="hideChildren()" class="w3-btn w3-blue">Hide Child List</button> 
-            
-            <!-- Child List -->
-            <div id="child-list" style="display: none;">
-                <h3> Your Child List </h3>
-                <button id="add-new-child-btn" onclick="openChildDropdown()" class="w3-btn w3-blue"> Add New Child </button>
-                <button id="hide-new-child-btn" onclick="hideChildDropdown()" style="display: none;" class="w3-btn w3-blue"> Cancel </button>
-                
-                <!-- Add Child Dropdown --> 
-                <div id="add-child-dropdown" style="display: none;">
-                    <br>
-                    <b>Child's Full Name (FirstName LastName)</b><br>
-                    <input type="text" placeholder="Your Child's Full Name" id="add-child-name" required>
-                    <br><br> 
-                    <b>Child's Date of Birth</b><br>
-                    <input type="date" name="begin" placeholder="dd-mm-yyyy" value="" min="1900-01-01" max="2100-12-31" id="add-child-date-of-birth" required>
-                    <br><br>
-                    <b>Gender</b><br> 
-                    <label for="gender">Child's Gender:</label>
-                    <select name="gender" id="add-child-gender" required>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
-                    </select> 
-                    <br><br>
-                    <button onclick="addChild()" class="w3-btn w3-blue">Submit</button>
-                </div>
-
-                <br>
-                <br>
-                <!--<input type="text" placeholder="Child ID" id="target-input">-->
-                <!--<button onclick="removeRow()"> Remove Child </button>-->
-                <br><br>
-                <table id="child-list-table"> 
-                    <tr>
-                        <th>Child Name</th>
-                        <th>Birth Date</th>
-                        <th>Gender</th> 
-                        <th>Enrolled Classes</th>
-                        <!-- <th>Previous Enrolled Classes</th> -->
-                    </tr> 
-                </table>
-            </div>
-            
-            <div id="show-class-roster" style="display: none;">
-                
-            </div>
         </div>
     </div>
-
     <div class="footer">
         <div class="pure-g">
             <div class = "pure-u-1-3">

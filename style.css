@@ -88,6 +88,15 @@ The content `<div>` is where all your content goes.
     color: #888;
 }
 
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #000642;
+    color: white;
+    text-align: center;
+ }
 
 
 /*

@@ -36,16 +36,19 @@
             <b><a class="pure-menu-heading" href="#">DCCS</a></b>
 
             <ul class="pure-menu-list">
-                
                 <li class="pure-menu-item"><a href="index.html" class="pure-menu-link">Home</a></li>
-
                 <li class="pure-menu-item menu-item-divided pure-menu-selected">
                     <a href="#" class="pure-menu-link">My Account</a>
                 </li>
+                <li class="pure-menu-item"><a href="classes.html" class="pure-menu-link">Classes</a></li>
+                <li class="pure-menu-item"><a href="calendar.html" class="pure-menu-link">Calendar</a></li>
+                <li class="pure-menu-item"><a href="events.html" class="pure-menu-link">Events</a></li>
                 <li class="pure-menu-item"><a href="resources.html" class="pure-menu-link">Resources</a></li>
+                <li class="pure-menu-item"><a href="gallery.html" class="pure-menu-link">Gallery</a></li>
+                <li class="pure-menu-item"><a href="employment.html" class="pure-menu-link">Employment</a></li>
                 <li class="pure-menu-item"><a href="aboutus.html" class="pure-menu-link">About Us</a></li>
-            
                 <li class="pure-menu-item"><a href="contact.html" class="pure-menu-link">Contact Us</a></li>
+
             </ul>
         </div>
     </div>
@@ -63,7 +66,7 @@
                     <h4 class="admin" id="admin-print"></h4>
                 </div>
                 <div class="pure-u-1-3">
-                    <img src="DCCS Logo.jpeg" alt="DCCS Logo" width="150" height="150">
+                    <img src="DCCS Map.png" alt="DCCS Logo" width="170" height="170">
                 </div>
             </div>
         </div>
@@ -143,16 +146,15 @@
                         <label for="add-class-teacher-name">Input the full name of the instructor/teacher:</label>
                         <input name="add-class-teacher-name" id="add-class-teacher-name" placeholder="Input teacher's full name">
                         
-                        <br><br>
+                        <br>
                         <button id="create-new-class-submit" onclick="submitNewClass()" class="w3-btn w3-blue">Save/Submit</button>
                     </div>
-                    <br>
+                    <br><br>
                     <button id="find-class-roster-btn" onclick="openClassRosterFinder()" class="w3-btn w3-blue">Find Class Info/Roster</button>
                     <button id="hide-class-roster-btn" onclick="hideClassRosterFinder()" style="display: none;" class="w3-btn w3-blue">Close</button>
                     
                     <!-- Display Class Info/Roster -->
                     <div id="display-class-roster" style="display: none;">
-                        <br>
                         <b><p>Find Class Information/Roster</p></b>
                         <label for="pick-class-catg">Pick a Class:</label>
                         <select name="pick-class-catg" id="pick-class-catg" onchange="updateCategoryFinder();" onfocus="this.selectedIndex = -1"></select>
@@ -161,7 +163,7 @@
                         <br><br>
                         <button id="show-class-info" onclick="showClassInfo()" class="w3-btn w3-blue">Show Class Info</button>
                         <button id="hide-class-info" onclick="hideClassInfo()" style="display: none;" class="w3-btn w3-blue">Hide Class Info</button>
-                        <br>
+                        <br><br>
                         <button id="show-class-roster" onclick="showClassRoster()" class="w3-btn w3-blue">Show Class Roster</button>
                         <button id="hide-class-roster" onclick="hideClassRoster()" style="display: none;" class="w3-btn w3-blue">Hide Class Roster</button>
                         <br><br>

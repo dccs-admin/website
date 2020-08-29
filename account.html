@@ -33,21 +33,20 @@
 
     <div id="menu">
         <div class="pure-menu">
-            <b><a class="pure-menu-heading" href="#">DCCS</a></b>
+            <b><a class="pure-menu-heading" href="index.html">DCCS 主页</a></b>
 
             <ul class="pure-menu-list">
-                <li class="pure-menu-item"><a href="index.html" class="pure-menu-link">Home</a></li>
                 <li class="pure-menu-item menu-item-divided pure-menu-selected">
-                    <a href="#" class="pure-menu-link">My Account</a>
+                    <a href="#" class="pure-menu-link">My Account 账号</a>
                 </li>
-                <li class="pure-menu-item"><a href="classes.html" class="pure-menu-link">Classes</a></li>
-                <li class="pure-menu-item"><a href="calendar.html" class="pure-menu-link">Calendar</a></li>
-                <li class="pure-menu-item"><a href="events.html" class="pure-menu-link">Events</a></li>
-                <li class="pure-menu-item"><a href="resources.html" class="pure-menu-link">Resources</a></li>
-                <li class="pure-menu-item"><a href="gallery.html" class="pure-menu-link">Gallery</a></li>
-                <li class="pure-menu-item"><a href="employment.html" class="pure-menu-link">Employment</a></li>
-                <li class="pure-menu-item"><a href="aboutus.html" class="pure-menu-link">About Us</a></li>
-                <li class="pure-menu-item"><a href="contact.html" class="pure-menu-link">Contact Us</a></li>
+                <li class="pure-menu-item"><a href="classes.html" class="pure-menu-link">Classes 课程表</a></li>
+                <li class="pure-menu-item"><a href="calendar.html" class="pure-menu-link">Calendar 校历</a></li>
+                <li class="pure-menu-item"><a href="events.html" class="pure-menu-link">Events 学校活动</a></li>
+                <li class="pure-menu-item"><a href="resources.html" class="pure-menu-link">Resources 资源</a></li>
+                <li class="pure-menu-item"><a href="gallery.html" class="pure-menu-link">Gallery 影集</a></li>
+                <li class="pure-menu-item"><a href="employment.html" class="pure-menu-link">Employment 招聘</a></li>
+                <li class="pure-menu-item"><a href="aboutus.html" class="pure-menu-link">About Us 学校介绍</a></li>
+                <li class="pure-menu-item"><a href="contact.html" class="pure-menu-link">Contact Us 联系我们</a></li>
 
             </ul>
         </div>
@@ -60,8 +59,9 @@
                     <img src="DCCS Logo.jpeg" alt="DCCS Logo" width="150" height="150">
                 </div>
                 <div class="pure-u-1-3">
-                    <h1 style="font-size: 40px">Delaware Chester Community School</h1>
-                    <h2 style="color: #000fb8;">My Account</h2>
+                    <h1 style="font-size: 24px">Delaware Chester Community School</h1>
+                    <h1 style="font-size: 30px">德清社区学校</h1>
+                    <h2 style="color: #000fb8;">My Account 账号</h2>
                     <h4 id="current-user"></h4>
                     <h4 class="admin" id="admin-print"></h4>
                 </div>
@@ -77,10 +77,12 @@
                 <br>
                 <input type="email" placeholder="email" id="email" required>
                 <input type="password" placeholder="password" id="password" required>
-                <button onclick="signIn()" id="signIn" class="w3-btn w3-black"> Sign In </button>
+                <button onclick="signIn()" id="signIn" class="w3-btn w3-blue"> Sign In 登陆 </button>
                 
-                <button onclick="signUp()" id="signUp" class="w3-btn w3-black"> Sign up </button>
-                <br><br>
+                <button onclick="signUp()" id="signUp" class="w3-btn w3-teal"> Sign Up 注册 </button>
+                <br>
+                <a href="forgetPassword.html"><p style="color: blue; font-size: 13px;">Forgot Password? 忘记密码?/p></a>
+                
                 <p>Welcome! If you haven't created an account yet, please enter a valid email and a password (at least 6 characters in length) and press 'Sign Up'.</p>
                 <p>If you have an existing account, sign in using the email you registered with us and your password.</p>
             </div>
@@ -88,11 +90,11 @@
             
             
             <br>
-            <button onclick="signOut()" id="signOut" style="display: none;" class="w3-btn w3-black"> Sign Out </button>
+            <button onclick="signOut()" id="signOut" style="display: none;" class="w3-btn w3-teal"> Sign Out 退出 </button>
 
             <p id="plsVerifyText" style="display: none;">Please verify your email address by pressing the Send Verification Email button below.</p>
         
-            <button onclick="send_verification()" id="sendVerification" style="display: none;" class="w3-btn w3-blue"> Send Verification Email </button>
+            <button onclick="send_verification()" id="sendVerification" style="display: none;" class="w3-btn w3-blue"> Send Verification Email 发送确认电邮 </button>
             <br>
 
             <!-- ADMIN PANEL -->
@@ -103,14 +105,16 @@
                     <form class="admin-actions">
                         <p>Warning: an Admin account will not be allowed to use normal user features such as adding children. Be sure that the person you plan to make an admin either has another normal account or does not mind the loss of normal user features.</p>
                         <input type="email" placeholder="User email" id="admin-email" required>
-                        <button class="w3-btn w3-blue">Make admin</button>
+                        <button class="w3-btn w3-blue"> Make administrator </button>
                     </form>
                     <br>
-                    <button id="add-new-class-btn" onclick="addNewClass()" class="w3-btn w3-blue">Add a New Class/Edit a Class</button>
-                    <button id="hide-new-class-btn" onclick="hideNewClass()" style="display: none;" class="w3-btn w3-blue">Cancel</button>
+                    <button id="add-new-class-btn" onclick="addNewClass()" class="w3-btn w3-blue"> Add a New Class/Edit a Class 设为管理员 </button>
+                    <button id="hide-new-class-btn" onclick="hideNewClass()" style="display: none;" class="w3-btn w3-blue"> Cancel 取消 </button>
                 
                     <!-- Adding New Class -->
 
+                    <!-- START HERE 8/29 -->
+                    
                     <div id="add-new-class" style="display: none;">
                         <br>
                         <b><p>Add a New Class/Edit an Existing Class</p></b>

@@ -601,6 +601,8 @@ function send_verification(){
     });
 }
 
+
+
 /*
 function removeRow(){
     var target = document.getElementById("target-input").value;
@@ -1484,6 +1486,24 @@ function hideClassRoster() {
     document.getElementById("hide-class-roster").style.display = "none";
     document.getElementById("admin-class-roster").style.display = "none";
     
+}
+
+function resetPassword() {
+    var auth = firebase.auth();
+    var email = $("#email").val();
+
+    if (email != "")
+    {
+        auth.sendPasswordResetEmail(email).then(function() {
+            window.alert("An email has been sent to you. Please check your email and verify.");
+        }).catch(function(error){
+            window.alert("There was an error. :|");
+        })
+    }
+    else
+    {
+        window.alert("Please input your email first.");
+    }
 }
 
 /*

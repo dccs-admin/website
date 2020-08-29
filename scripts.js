@@ -189,6 +189,14 @@ function showProfile(){
         
     });
 
+    var debtRef = db.collection("debt").doc(uid);
+    debtRef.get().then(function(doc) {
+        if (!doc.exists) {
+            db.collection("debt").doc(uid).set({
+                debt: "0"
+            })
+        }
+    })
 
     document.getElementById("profile-email").innerHTML = "Current email: " + email;
 }

@@ -1125,7 +1125,6 @@ function submitClassRegistration() {
         window.alert("You pressed Cancel.")
         hideClassRegistration();
     } else {
-        
         var user = firebase.auth().currentUser;
         var uid = user.uid;
 
@@ -1253,6 +1252,7 @@ function submitClassRegistration() {
         })
 
         updateCostReal();
+        hideClassRegistration();
     }   
 }
 

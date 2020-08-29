@@ -182,7 +182,9 @@ function showProfile(){
         } else {
             //else CREATE DOC 
             db.collection("users").doc(uid).set({
-                email: email
+                email: email,
+                parent_name: "",
+                phone_num: ""
             })
         }
     }).catch(function(error) {

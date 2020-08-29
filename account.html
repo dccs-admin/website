@@ -119,8 +119,6 @@
                     <button id="hide-new-class-btn" onclick="hideNewClass()" style="display: none;" class="w3-btn w3-blue"> Cancel 取消 </button>
                 
                     <!-- Adding New Class -->
-
-                    <!-- START HERE 8/29 -->
                     
                     <div id="add-new-class" style="display: none;">
                         <br>
@@ -156,6 +154,10 @@
 
                         <label id="add-class-teacher-name-text" for="add-class-teacher-name">Input the full name of the instructor/teacher:</label>
                         <input name="add-class-teacher-name" id="add-class-teacher-name" placeholder="Input teacher's full name">
+                        <br><br>
+
+                        <label id="add-class-days-text" for="add-class-days">Input which day or days of the week the class will be on:</label>
+                        <input name="add-class-days" id="add-class-days" placeholder="Ex: Monday, Tuesday, and Friday">
                         
                         <br><br>
                         <button id="create-new-class-submit" onclick="submitNewClass()" class="w3-btn w3-blue">Save/Submit 保存/提交</button>
@@ -197,6 +199,9 @@
                             
                             <b id="info-teacher-name-text">Teacher Name: </b>
                             <p id="info-teacher-name"></p>
+
+                            <b id="info-class-days-text">Class Days: </b>
+                            <p id="info-class-days"></p>
                             <br>
                         </div>
                         
@@ -318,6 +323,8 @@
                 <select name="choose-class-1" id="choose-class-1" onchange="updateClassSelection1()" onfocus="this.selectedIndex = -1"></select>
                 <b><p style="font-size: 15px;">Class Hours:</p></b>
                 <p style="font-size: 15px;" id="time-1">None</p>
+                <b><p style="font-size: 15px;">Class Days:</p></b>
+                <p style="font-size: 15px;" id="days-1">None</p>
                 <b><p style="font-size: 15px;">Cost:</p></b>
                 <p style="font-size: 15px;" id="cost-1">$0</p>
                 

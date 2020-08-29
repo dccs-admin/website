@@ -239,8 +239,9 @@ function showChildren(){
                     var docData = doc.data();
                     var startTime = docData["startTime"].slice(0,4);
                     var endTime = docData["endTime"];
+                    var classDays = docData["classDays"];
                     classString = classString + class1;
-                    classString = classString + "<br>" + startTime + " to " + endTime + "<br><br>";
+                    classString = classString + "<br>" + startTime + " to " + endTime + " on " + classDays + "<br><br>";
                     cell4.innerHTML = classString;
                 })
             }
@@ -253,8 +254,9 @@ function showChildren(){
                     var docData = doc.data();
                     var startTime = docData["startTime"].slice(0,4);
                     var endTime = docData["endTime"];
+                    var classDays = docData["classDays"];
                     classString = classString + class2;
-                    classString = classString + "<br>" + startTime + " to " + endTime + "<br><br>";
+                    classString = classString + "<br>" + startTime + " to " + endTime + " on " + classDays + "<br><br>";
                     cell4.innerHTML = classString;
                 })
             }
@@ -267,8 +269,9 @@ function showChildren(){
                     var docData = doc.data();
                     var startTime = docData["startTime"].slice(0,4);
                     var endTime = docData["endTime"];
+                    var classDays = docData["classDays"];
                     classString = classString + class3;
-                    classString = classString + "<br>" + startTime + " to " + endTime + "<br><br>";
+                    classString = classString + "<br>" + startTime + " to " + endTime + " on " + classDays + "<br><br>";
                     cell4.innerHTML = classString;
                 })
             }
@@ -281,8 +284,9 @@ function showChildren(){
                     var docData = doc.data();
                     var startTime = docData["startTime"].slice(0,4);
                     var endTime = docData["endTime"];
+                    var classDays = docData["classDays"];
                     classString = classString + class4;
-                    classString = classString + "<br>" + startTime + " to " + endTime + "<br><br>";
+                    classString = classString + "<br>" + startTime + " to " + endTime + " on " + classDays + "<br><br>";
                     cell4.innerHTML = classString;
                 })
             }
@@ -295,8 +299,9 @@ function showChildren(){
                     var docData = doc.data();
                     var startTime = docData["startTime"].slice(0,4);
                     var endTime = docData["endTime"];
+                    var classDays = docData["classDays"];
                     classString = classString + class5;
-                    classString = classString + "<br>" + startTime + " to " + endTime + "<br><br>";
+                    classString = classString + "<br>" + startTime + " to " + endTime + " on " + classDays + "<br><br>";
                     cell4.innerHTML = classString;
                 })
             }
@@ -309,8 +314,9 @@ function showChildren(){
                     var docData = doc.data();
                     var startTime = docData["startTime"].slice(0,4);
                     var endTime = docData["endTime"];
+                    var classDays = docData["classDays"];
                     classString = classString + class6;
-                    classString = classString + "<br>" + startTime + " to " + endTime + "<br><br>";
+                    classString = classString + "<br>" + startTime + " to " + endTime + " on " + classDays + "<br><br>";
                     cell4.innerHTML = classString;
                 })
             }
@@ -535,6 +541,14 @@ function hideClassRegistration(){
     document.getElementById("time-4").innerHTML = "";
     document.getElementById("time-5").innerHTML = "";
     document.getElementById("time-6").innerHTML = "";
+
+    document.getElementById("days-1").innerHTML = "";
+    document.getElementById("days-2").innerHTML = "";
+    document.getElementById("days-3").innerHTML = "";
+    document.getElementById("days-4").innerHTML = "";
+    document.getElementById("days-5").innerHTML = "";
+    document.getElementById("days-6").innerHTML = "";
+
     document.getElementById("cost-1").innerHTML = "";
     document.getElementById("cost-2").innerHTML = "";
     document.getElementById("cost-3").innerHTML = "";
@@ -999,6 +1013,8 @@ function updateClassSelection1() {
         let startTime = docData["startTime"];
         let endTime = docData["endTime"];
         let cost = docData["classCost"];
+        let classDays = docData["classDays"];
+        document.getElementById("days-1").innerHTML = classDays;
         document.getElementById("cost-1").innerHTML = "$" + cost;
         //totalCost = totalCost + parseInt(cost);
         //console.log("pog");
@@ -1017,6 +1033,8 @@ function updateClassSelection2() {
         let startTime = docData["startTime"];
         let endTime = docData["endTime"];
         let cost = docData["classCost"];
+        let classDays = docData["classDays"];
+        document.getElementById("days-2").innerHTML = classDays;
         document.getElementById("cost-2").innerHTML = "$" + cost;
         //totalCost += parseInt(cost);
         document.getElementById("time-2").innerHTML = startTime + " - " + endTime;
@@ -1034,6 +1052,8 @@ function updateClassSelection3() {
         let startTime = docData["startTime"];
         let endTime = docData["endTime"];
         let cost = docData["classCost"];
+        let classDays = docData["classDays"];
+        document.getElementById("days-3").innerHTML = classDays;
         document.getElementById("cost-3").innerHTML = "$" + cost;
         //totalCost += parseInt(cost);
         document.getElementById("time-3").innerHTML = startTime + " - " + endTime;
@@ -1051,6 +1071,8 @@ function updateClassSelection4() {
         let startTime = docData["startTime"];
         let endTime = docData["endTime"];
         let cost = docData["classCost"];
+        let classDays = docData["classDays"];
+        document.getElementById("days-4").innerHTML = classDays;
         document.getElementById("cost-4").innerHTML = "$" + cost;
         //totalCost += parseInt(cost);
         document.getElementById("time-4").innerHTML = startTime + " - " + endTime;
@@ -1068,6 +1090,8 @@ function updateClassSelection5() {
         let startTime = docData["startTime"];
         let endTime = docData["endTime"];
         let cost = docData["classCost"];
+        let classDays = docData["classDays"];
+        document.getElementById("days-5").innerHTML = classDays;
         document.getElementById("cost-5").innerHTML = "$" + cost;
         //totalCost += parseInt(cost);
         document.getElementById("time-5").innerHTML = startTime + " - " + endTime;
@@ -1085,6 +1109,8 @@ function updateClassSelection6() {
         let startTime = docData["startTime"];
         let endTime = docData["endTime"];
         let cost = docData["classCost"];
+        let classDays = docData["classDays"];
+        document.getElementById("days-6").innerHTML = classDays;
         document.getElementById("cost-6").innerHTML = "$" + cost;
         //totalCost += parseInt(cost);
         document.getElementById("time-6").innerHTML = startTime + " - " + endTime;
@@ -1312,6 +1338,8 @@ function submitNewClass() {
     var newClassMaxStudents = document.getElementById("add-class-max-students").value;
 
     var newClassTeacherName = document.getElementById("add-class-teacher-name").value;
+
+    var newClassDays = document.getElementById("add-class-days").value;
     
     db.collection("classes").doc(newClassCatg).collection(newClassCatg+"-classes-list").doc(newClassName).set({
         className: newClassName,
@@ -1319,7 +1347,8 @@ function submitNewClass() {
         startTime: newClassStartTime,
         endTime: newClassEndTime,
         maxStudents: newClassMaxStudents,
-        teacherName: newClassTeacherName
+        teacherName: newClassTeacherName,
+        classDays: newClassDays
     })
 
     db.collection("classes").doc(newClassCatg).collection(newClassCatg+"-classes-list").doc(newClassName).collection("students").doc("temp").set({
@@ -1436,12 +1465,14 @@ function updateClassFinder() {
         var classCost = infoData["classCost"];
         var maxStudents = infoData["maxStudents"];
         var teacherName = infoData["teacherName"];
+        var classDays = infoData["classDays"];
         document.getElementById("info-class-name").innerHTML = className;
         document.getElementById("info-start-time").innerHTML = startTime;
         document.getElementById("info-end-time").innerHTML = endTime;
         document.getElementById("info-cost").innerHTML = classCost;
         document.getElementById("info-max-students").innerHTML = maxStudents;
         document.getElementById("info-teacher-name").innerHTML = teacherName;
+        document.getElementById("info-class-days").innerHTML = classDays;
     })
 
     // Class roster

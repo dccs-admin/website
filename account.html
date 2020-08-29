@@ -148,6 +148,10 @@
                         <input name="add-class-endTime" id="add-class-endTime" placeholder="Format: X:YZ PM (EST)">
                         <br><br>
 
+                        <label id="add-class-days-text" for="add-class-days">Input which day or days of the week the class will be on:</label>
+                        <input name="add-class-days" id="add-class-days" placeholder="Ex: Monday, Tuesday, and Friday">
+                        <br><br>
+
                         <label id="add-class-max-students-text" for="add-class-max-students">Input the maximum number of students:</label>
                         <input name="add-class-max-students" id="add-class-max-students" placeholder="Input a number">
                         <br><br>
@@ -155,11 +159,7 @@
                         <label id="add-class-teacher-name-text" for="add-class-teacher-name">Input the full name of the instructor/teacher:</label>
                         <input name="add-class-teacher-name" id="add-class-teacher-name" placeholder="Input teacher's full name">
                         <br><br>
-
-                        <label id="add-class-days-text" for="add-class-days">Input which day or days of the week the class will be on:</label>
-                        <input name="add-class-days" id="add-class-days" placeholder="Ex: Monday, Tuesday, and Friday">
                         
-                        <br><br>
                         <button id="create-new-class-submit" onclick="submitNewClass()" class="w3-btn w3-blue">Save/Submit 保存/提交</button>
                     </div>
                     <br><br>
@@ -191,6 +191,9 @@
                             <b id="info-end-time-text">End Time: </b>
                             <p id="info-end-time"></p>
 
+                            <b id="info-class-days-text">Class Days: </b>
+                            <p id="info-class-days"></p>
+
                             <b id="info-cost-text"> Cost (USD): </b>
                             <p id="info-cost"></p>
 
@@ -199,9 +202,6 @@
                             
                             <b id="info-teacher-name-text">Teacher Name: </b>
                             <p id="info-teacher-name"></p>
-
-                            <b id="info-class-days-text">Class Days: </b>
-                            <p id="info-class-days"></p>
                             <br>
                         </div>
                         
@@ -336,6 +336,8 @@
                 <select name="choose-class-2" id="choose-class-2" onchange="updateClassSelection2()" onfocus="this.selectedIndex = -1"></select>
                 <b><p style="font-size: 15px;">Class Hours:</p></b>
                 <p style="font-size: 15px;" id="time-2">None</p> 
+                <b><p style="font-size: 15px;">Class Days:</p></b>
+                <p style="font-size: 15px;" id="days-2">None</p>
                 <b><p style="font-size: 15px;">Cost:</p></b>
                 <p style="font-size: 15px;" id="cost-2">$0</p>
                 
@@ -347,6 +349,8 @@
                 <select name="choose-class-3" id="choose-class-3" onchange="updateClassSelection3()" onfocus="this.selectedIndex = -1"></select>
                 <b><p style="font-size: 15px;">Class Hours:</p></b>
                 <p style="font-size: 15px;" id="time-3">None</p>
+                <b><p style="font-size: 15px;">Class Days:</p></b>
+                <p style="font-size: 15px;" id="days-3">None</p>
                 <b><p style="font-size: 15px;">Cost:</p></b>
                 <p style="font-size: 15px;" id="cost-3">$0</p>
 
@@ -358,6 +362,8 @@
                 <select name="choose-class-4" id="choose-class-4" onchange="updateClassSelection4()" onfocus="this.selectedIndex = -1"></select>
                 <b><p style="font-size: 15px;">Class Hours:</p></b>
                 <p style="font-size: 15px;" id="time-4">None</p>
+                <b><p style="font-size: 15px;">Class Days:</p></b>
+                <p style="font-size: 15px;" id="days-4">None</p>
                 <b><p style="font-size: 15px;">Cost:</p></b>
                 <p style="font-size: 15px;" id="cost-4">$0</p>
 
@@ -369,6 +375,8 @@
                 <select name="choose-class-5" id="choose-class-5" onchange="updateClassSelection5()" onfocus="this.selectedIndex = -1"></select>
                 <b><p style="font-size: 15px;"> Class Hours:</p></b>
                 <p style="font-size: 15px;" id="time-5">None</p>
+                <b><p style="font-size: 15px;">Class Days:</p></b>
+                <p style="font-size: 15px;" id="days-5">None</p>
                 <b><p style="font-size: 15px;">Cost:</p></b>
                 <p style="font-size: 15px;" id="cost-5">$0</p>
 
@@ -380,6 +388,8 @@
                 <select name="choose-class-6" id="choose-class-6" onchange="updateClassSelection6()" onfocus="this.selectedIndex = -1"></select>
                 <b><p style="font-size: 15px;">Class Hours:</p></b>
                 <p style="font-size: 15px;" id="time-6">None</p>
+                <b><p style="font-size: 15px;">Class Days:</p></b>
+                <p style="font-size: 15px;" id="days-6">None</p>
                 <b><p style="font-size: 15px;">Cost:</p></b>
                 <p style="font-size: 15px;" id="cost-6">$0</p>
 

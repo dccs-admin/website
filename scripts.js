@@ -1545,3 +1545,92 @@ rootRef.orderByChild('first_name').equalTo('Joe').on('value', snapshot => {
     console.log(snapshot.val());
 });
 */
+
+// SWITCH LANGUAGE stuff
+
+function useChinese() {
+
+    // Change language button
+    document.getElementById("use-english-btn").style.display = "block";
+    document.getElementById("use-chinese-btn").style.display = "none";
+    
+
+    // Pre-login
+    document.getElementById("prelog-e-1").style.display = "none";
+    document.getElementById("prelog-e-2").style.display = "none";
+
+    document.getElementById("prelog-c-1").style.display = "block";
+    document.getElementById("prelog-c-2").style.display = "block";
+
+
+    // Login and Not Verified
+    document.getElementById("plsVerifyText").innerHTML = "请按下面的“发送验证电子邮件”按钮来验证您的电子邮件地址。";
+
+
+    // Login and Admin
+    document.getElementById("admin-notice-1").innerHTML = "管理员帐户可以访问数据库的每个级别。 但是，禁止管理员帐户创建个人资料，添加子级和注册课程。 管理员可以选择拥有一个二级非管理员帐户，他们可以免费使用该帐户来注册其子女的课程。";
+    document.getElementById("admin-notice-2").innerHTML = "警告：将不允许管理员帐户使用普通用户功能（例如添加子代）。 请确保您计划成为管理员的人拥有另一个普通帐户，或者不介意丢失普通用户功能。";
+
+    document.getElementById("add/edit-new-class-text").innerHTML = "添加新类/编辑现有类";
+    document.getElementById("add-new-class-catg-text").innerHTML = "选择一个现有类别或创建一个类别：";
+    document.getElementById("add-new-catg-input-text").innerHTML = "输入新类别的名称：";
+    document.getElementById("add-new-class-name-text").innerHTML = "输入班级名称：";
+    document.getElementById("add-class-cost-text").innerHTML = "输入课程费用（美元)：";
+    document.getElementById("add-class-startTime-text").innerHTML = "输入课程的开始时间：";
+    document.getElementById("add-class-endTime-text").innerHTML = "输入课程的结束时间：";
+    document.getElementById("add-class-max-students-text").innerHTML = "输入最大学生人数：";
+    document.getElementById("add-class-teacher-name-text").innerHTML = "输入教师/老师的全名：";
+
+    document.getElementById("find-class-info/roster-text").innerHTML = "查找班级信息/名册";
+    document.getElementById("pick-class-catg-text").innerHTML = "选择一个班级：";
+    document.getElementById("info-class-name-text").innerHTML = "班级名称：";
+    document.getElementById("info-start-time-text").innerHTML = "开始时间：";
+    document.getElementById("info-end-time-text").innerHTML = "结束时间：";
+    document.getElementById("info-cost-text").innerHTML = "费用（美元）：";
+    document.getElementById("info-max-students-text").innerHTML = "最多学生人数：";
+    document.getElementById("info-teacher-name-text").innerHTML = "老师的名字：";
+
+}
+
+
+function useEnglish() {
+    // Change language button
+    document.getElementById("use-english-btn").style.display = "none";
+    document.getElementById("use-chinese-btn").style.display = "block";
+
+
+    // Pre-login
+    document.getElementById("prelog-e-1").style.display = "block";
+    document.getElementById("prelog-e-2").style.display = "block";
+
+    document.getElementById("prelog-c-1").style.display = "none";
+    document.getElementById("prelog-c-2").style.display = "none";
+
+
+    // Login and Not Verified
+    document.getElementById("plsVerifyText").innerHTML = "Please verify your email address by pressing the Send Verification Email button below.";
+
+
+    // Login and Admin
+    document.getElementById("admin-notice-1").innerHTML = "Administrator accounts have access to every level of the database. However, admin accounts are barred from making a profile, adding children, and registering for classes. Admins may choose to own a secondary account (that is not admin) which they may freely use to sign up their children for classes.";
+    document.getElementById("admin-notice-2").innerHTML = "Warning: an Admin account will not be allowed to use normal user features such as adding children. Be sure that the person you plan to make an admin either has another normal account or does not mind the loss of normal user features.";
+
+    document.getElementById("add/edit-new-class-text").innerHTML = "Add a New Class/Edit an Existing Class";
+    document.getElementById("add-new-class-catg-text").innerHTML = "Choose an existing category or create one:";
+    document.getElementById("add-new-catg-input-text").innerHTML = "Input the name of the new category:";
+    document.getElementById("add-new-class-name-text").innerHTML = "Input the name of the class:";
+    document.getElementById("add-class-cost-text").innerHTML = "Input the cost of the class (USD):";
+    document.getElementById("add-class-startTime-text").innerHTML = "Input the start time of the class:";
+    document.getElementById("add-class-endTime-text").innerHTML = "Input the end time of the class:";
+    document.getElementById("add-class-max-students-text").innerHTML = "Input the maximum number of students:";
+    document.getElementById("add-class-teacher-name-text").innerHTML = "Input the full name of the instructor/teacher:";
+
+    document.getElementById("find-class-info/roster-text").innerHTML = "Find Class Information/Roster";
+    document.getElementById("pick-class-catg-text").innerHTML = "Pick a Class:";
+    document.getElementById("info-class-name-text").innerHTML = "Class Name:";
+    document.getElementById("info-start-time-text").innerHTML = "Start Time:";
+    document.getElementById("info-end-time-text").innerHTML = "End Time:";
+    document.getElementById("info-cost-text").innerHTML = "Cost (USD):";
+    document.getElementById("info-max-students-text").innerHTML = "Maximum # of Students:";
+    document.getElementById("info-teacher-name-text").innerHTML = "Teacher Name:"
+}

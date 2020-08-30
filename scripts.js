@@ -41,7 +41,7 @@ function sleep(ms) {
 function signUp(){
     var email = document.getElementById("email");
     var password = document.getElementById("password");
-    if (email == "") {
+    if (!email.exists) {
         window.alert("Please enter a valid email address and a password in the two boxes on the left and then press Sign Up.")
     }
 

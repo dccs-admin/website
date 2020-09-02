@@ -1601,9 +1601,11 @@ function useChinese() {
     // Pre-login
     document.getElementById("prelog-e-1").style.display = "none";
     document.getElementById("prelog-e-2").style.display = "none";
+    document.getElementById("prelog-e-3").style.display = "none";
 
     document.getElementById("prelog-c-1").style.display = "block";
     document.getElementById("prelog-c-2").style.display = "block";
+    document.getElementById("prelog-c-3").style.display = "block";
 
 
     // Login and Not Verified
@@ -1645,9 +1647,11 @@ function useEnglish() {
     // Pre-login
     document.getElementById("prelog-e-1").style.display = "block";
     document.getElementById("prelog-e-2").style.display = "block";
+    document.getElementById("prelog-e-3").style.display = "block";
 
     document.getElementById("prelog-c-1").style.display = "none";
     document.getElementById("prelog-c-2").style.display = "none";
+    document.getElementById("prelog-c-3").style.display = "none";
 
 
     // Login and Not Verified

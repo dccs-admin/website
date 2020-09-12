@@ -1631,7 +1631,8 @@ function useChinese() {
     document.getElementById("info-class-name-text").innerHTML = "班级名称：";
     document.getElementById("info-start-time-text").innerHTML = "开始时间：";
     document.getElementById("info-end-time-text").innerHTML = "结束时间：";
-    document.getElementById("info-cost-text").innerHTML = "费用（美元）：";
+    document.getElementById("info-class-days-text").innerHTML = "上课日: ";
+    document.getElementById("info-cost-text").innerHTML = "费用（美元)：";
     document.getElementById("info-max-students-text").innerHTML = "最多学生人数：";
     document.getElementById("info-teacher-name-text").innerHTML = "老师的名字：";
 
@@ -1677,7 +1678,8 @@ function useEnglish() {
     document.getElementById("info-class-name-text").innerHTML = "Class Name:";
     document.getElementById("info-start-time-text").innerHTML = "Start Time:";
     document.getElementById("info-end-time-text").innerHTML = "End Time:";
+    document.getElementById("info-class-days-text").innerHTML = "Class Days: ";
     document.getElementById("info-cost-text").innerHTML = "Cost (USD):";
     document.getElementById("info-max-students-text").innerHTML = "Maximum # of Students:";
-    document.getElementById("info-teacher-name-text").innerHTML = "Teacher Name:"
+    document.getElementById("info-teacher-name-text").innerHTML = "Teacher Name:";
 }

@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- .btn 
+# .btn-primary : blue
+# .btn-secondary : gray
+# .btn-success : green
+# .btn-info : blue/teal
+# .btn-warning : yellow
+# .btn-danger : red
+# .btn-light : white
+# .btn-dark : dark
+-->
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>DCCS | Forgot Password</title>
+  <title>DCCS | Sign Up</title>
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
@@ -64,23 +73,17 @@
         <h1 class="mt-4" style="text-align:center;">DCCS</h1>
         <h2 class="mt-0" style="text-align:center;">德清社区学校</h2>
         <br>
-        <h2>Forgot Your Password?</h2>
-        <div>
-            <p>
-                Please enter the email address you used to register with us, and we will send you an email to recover your account.
-            </p>
-        </div>
+        <h2>Sign Up</h2>
 
-        <div>
-            <input id="enter-email" type="email" placeholder="Email Address">
-        </div>
+        
         <br>
-        <div>
-            <button onclick="resetPassword()" type="button" class="btn btn-outline-danger">
-                Send Reset Email
-            </button>
-        </div>
+        <input type="email" placeholder="email" id="email" required><br><br>
+        <input type="password" placeholder="password" id="password" required><br><br>
+                
+        <button onclick="signUp()" id="signUp" class="btn btn-outline-success"> Sign Up 注册 </button>
 
+        <br>
+                           
       </div>
     </div>
     <!-- /#page-content-wrapper -->
@@ -100,10 +103,8 @@
     });
   </script>
 
-  <script src="forgetPassword.js"></script>
+    <script src="scripts.js"></script>
 
 </body>
 
 </html>
-
-

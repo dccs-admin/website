@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- .btn 
+# .btn-primary : blue
+# .btn-secondary : gray
+# .btn-success : green
+# .btn-info : blue/teal
+# .btn-warning : yellow
+# .btn-danger : red
+# .btn-light : white
+# .btn-dark : dark
+-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>DCCS | My Account</title>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script> 
+  <!--<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-database.js"></script>-->
+  <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-functions.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">Delaware Chester <br> Community School</div>
+      <div class="list-group list-group-flush">
+        <a href="index.html" class="list-group-item list-group-item-action bg-light">Home 主页</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">My Account 账号</a>
+        <a href="https://docs.google.com/spreadsheets/u/1/d/1I0s2aX15wuy3IToIFv8wgcwCXIp4Y_nS_O5Qs4N7uIo/htmlview" class="list-group-item list-group-item-action bg-light">Classes 课程表</a>
+        <a href="calendar.html" class="list-group-item list-group-item-action bg-light">Calendar 校历</a>
+        <a href="events.html" class="list-group-item list-group-item-action bg-light">Events 学校活动</a>
+        <a href="resources.html" class="list-group-item list-group-item-action bg-light">Resources 资源</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Gallery 影集</a>
+        <a href="employment.html" class="list-group-item list-group-item-action bg-light">Employment 招聘</a>
+        <a href="aboutus.html" class="list-group-item list-group-item-action bg-light">About Us 学校介绍</a>
+        <a href="contact.html" class="list-group-item list-group-item-action bg-light">Contact Us 联系我们</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">Open/Close Menu</button>
+        
+      </nav>
+
+      <div class="container-fluid">
+        <img src="DCCS Logo.jpeg" width="100px" height="100px" style="float: left;">
+        <img src="DCCS Map.png" width="100px" height="100px" style="float: right;">
+        <h1 class="mt-4" style="text-align:center;">DCCS</h1>
+        <h2 class="mt-0" style="text-align:center;">德清社区学校</h2>
+        <br>
+        <h2>My Account</h2>
+        <button id="use-chinese-btn" onclick="useChinese()" class="btn btn-secondary">中文</button>
+        <button id="use-english-btn" onclick="useEnglish()" style="display: none;" class="btn btn-secondary">English</button><br><br>
+        <h4 id="current-user"></h4>
+        <h4 class="admin" id="admin-print"></h4>
+
+        <br>
+        <br>
+        <div id="formContainer">
+            <input type="email" placeholder="email" id="email" required>
+            <input type="password" placeholder="password" id="password" required>
+            <button onclick="signIn()" id="signIn" class="btn btn-outline-info"> Sign In 登陆 </button>
+            <a href="forgetPassword.html"><button class="btn btn-outline-warning"> Forgot Password? 忘记密码? </button></a>
+            <br><br>
+                    
+            <a href="signup.html"><button class="btn btn-outline-success"> Sign Up 注册 </button></a>
+
+            
+            <br><br>
+                            
+            <p id="prelog-e-1">Welcome! If you haven't created an account yet, please press the Sign Up button.</p>
+            <p id="prelog-e-2">If you have an existing account, sign in using the email you registered with us and your password, and press Sign In.</p>
+            <b id="prelog-e-3">The Class Registration System is currently under development and will most likely not be available for the 2020-2021 school year. However, you may still make an account if you wish.</b>
+
+            <p id="prelog-c-1" style="display: none;">欢迎！如果您尚未创建帐户，请按“注册”按钮。</p>
+            <p id="prelog-c-2" style="display: none;">如果您已有帐户，请使用向我们注册的电子邮件和密码登录，然后按“登录”。</p>
+            <b id="prelog-c-3" style="display: none;">班级注册系统目前正在开发中，极有可能在2020-2021学年不可用。但是，如果您愿意，您仍然可以注册一个帐户。</b>
+
+        </div>
+        <br>
+            <button onclick="signOut()" id="signOut" style="display: none;" class="btn btn-info"> Sign Out 退出 </button>
+
+            <p id="plsVerifyText" style="display: none;"><br>Please verify your email address by pressing the Send Verification Email button below.</p>
+
+            <button onclick="send_verification()" id="sendVerification" style="display: none;" class="btn btn-outline-dark"> Send Verification Email 发送确认电邮 </button>
+            
+
+            <!-- ADMIN PANEL -->
+            <div class="admin" style="display: none;">
+                <div>
+                    <br>
+                    <p id="admin-notice-1">Administrator accounts have access to every level of the database. However, admin accounts are barred from making a profile, adding children, and registering for classes. Admins may choose to own a secondary account (that is not admin) which they may freely use to sign up their children for classes.</p>
+                    <form class="admin-actions">
+                        <p id="admin-notice-2">Warning: an Admin account will not be allowed to use normal user features such as adding children. Be sure that the person you plan to make an admin either has another normal account or does not mind the loss of normal user features.</p>
+                        <input type="email" placeholder="User email" id="admin-email" required>
+                        <button class="btn btn-outline-danger"> Make administrator 设为管理员</button>
+                    </form>
+                    <br>
+                    <button id="add-new-class-btn" onclick="addNewClass()" class="btn btn-primary"> Add a New Class/Edit a Class 设为管理员 </button>
+                    <button id="hide-new-class-btn" onclick="hideNewClass()" style="display: none;" class="btn btn-outline-primary"> Cancel 取消 </button>
+                
+                    <!-- Adding New Class -->
+                    
+                    <div id="add-new-class" style="display: none;">
+                        <br>
+                        <b><p id="add/edit-new-class-text">Add a New Class/Edit an Existing Class</p></b>
+                        <label id="add-new-class-catg-text" for="add-new-class-catg">Choose an existing category or create one:</label>
+                        <select name="add-new-class-catg" id="add-new-class-catg-select" onchange="updateNewClassCatg()" onfocus="this.selectedIndex = -1"></select>
+                        <div id="create-new-catg" style="display: none;">
+                            <br>
+                            <label id="add-new-catg-input-text" for="add-new-catg-input">Input the name of the new category:</label>
+                            <input name="add-new-catg-input" id="new-catg-name" placeholder="New Category Name"><br><br>
+                        </div>
+                        <br><br> 
+
+                        <label id="add-new-class-name-text" for="add-new-class-name">Input the name of the class:</label>
+                        <input name="add-new-class-name" id="add-new-class-name" placeholder="Class Name">
+                        <br><br>
+
+                        <label id="add-class-cost-text" for="add-class-cost">Input the cost of the class (USD):</label>
+                        <input name="add-class-cost" id="add-class-cost" placeholder="Ex: 200">
+                        <br><br>
+
+                        <label id="add-class-startTime-text" for="add-class-startTime">Input the start time of the class:</label>
+                        <input name="add-class-startTime" id="add-class-startTime" placeholder="Format: X:YZ PM (EST)">
+                        <br><br>
+
+                        <label id="add-class-endTime-text" for="add-class-endTime">Input the end time of the class:</label>
+                        <input name="add-class-endTime" id="add-class-endTime" placeholder="Format: X:YZ PM (EST)">
+                        <br><br>
+
+                        <label id="add-class-days-text" for="add-class-days">Input which day or days of the week the class will be on:</label>
+                        <input name="add-class-days" id="add-class-days" placeholder="Ex: Monday, Tuesday, and Friday">
+                        <br><br>
+
+                        <label id="add-class-max-students-text" for="add-class-max-students">Input the maximum number of students:</label>
+                        <input name="add-class-max-students" id="add-class-max-students" placeholder="Input a number">
+                        <br><br>
+
+                        <label id="add-class-teacher-name-text" for="add-class-teacher-name">Input the full name of the instructor/teacher:</label>
+                        <input name="add-class-teacher-name" id="add-class-teacher-name" placeholder="Input teacher's full name">
+                        <br><br>
+                        
+                        <button id="create-new-class-submit" onclick="submitNewClass()" class="btn btn-success">Save/Submit 保存/提交</button>
+                    </div>
+                    <br><br>
+                    <button id="find-class-roster-btn" onclick="openClassRosterFinder()" class="btn btn-primary">Find Class Information/Roster 查找班级信息/名册</button>
+                    <button id="hide-class-roster-btn" onclick="hideClassRosterFinder()" style="display: none;" class="btn btn-primary">Close 关</button>
+                    
+                    <!-- Display Class Info/Roster -->
+                    <div id="display-class-roster" style="display: none;">
+                        <br>
+                        <b><p id="find-class-info/roster-text">Find Class Information/Roster</p></b>
+                        <label id="pick-class-catg-text" for="pick-class-catg">Pick a Class:</label>
+                        <select name="pick-class-catg" id="pick-class-catg" onchange="updateCategoryFinder();" onfocus="this.selectedIndex = -1"></select>
+                        <label for="pick-class"></label>
+                        <select name="pick-class" id="pick-class" onchange="updateClassFinder()" onfocus="this.selectedIndex = -1"></select>
+                        <br><br>
+                        <button id="show-class-info" onclick="showClassInfo()" class="btn btn-info">Show Class Information 显示班级信息</button>
+                        <button id="hide-class-info" onclick="hideClassInfo()" style="display: none;" class="btn btn-info">Hide Class Information 隐藏课程信息</button>
+                        <br><br>
+                        <button id="show-class-roster" onclick="showClassRoster()" class="btn btn-info">Show Class Roster 显示班级名册</button>
+                        <button id="hide-class-roster" onclick="hideClassRoster()" style="display: none;" class="btn btn-info">Hide Class Roster 隐藏类名册</button>
+                        <br><br>
+
+                        <div id="admin-class-info" style="display: none;">
+                            <b id="info-class-name-text">Class Name: </b>
+                            <p id="info-class-name"></p>
+
+                            <b id="info-start-time-text">Start Time: </b>
+                            <p id="info-start-time"></p>
+
+                            <b id="info-end-time-text">End Time: </b>
+                            <p id="info-end-time"></p>
+
+                            <b id="info-class-days-text">Class Days: </b>
+                            <p id="info-class-days"></p>
+
+                            <b id="info-cost-text"> Cost (USD): </b>
+                            <p id="info-cost"></p>
+
+                            <b id="info-max-students-text">Maximum # of Students: </b>
+                            <p id="info-max-students"></p>
+                            
+                            <b id="info-teacher-name-text">Teacher Name: </b>
+                            <p id="info-teacher-name"></p>
+                            <br>
+                        </div>
+                        
+                        <div id="admin-class-roster" style="display: none;">
+                            <table id="child-roster-table" class="table-bordered"> 
+                                <tr>
+                                    <th>Student Name 学生姓名</th>
+                                    <th>Parent Name 父母名字</th>
+                                    <th>Registered Email 电子邮件</th> 
+                                    <th>Registered Phone Number 电话号码</th>
+                                </tr> 
+                            </table>
+                        </div>
+                    </div>
+                    
+
+                </div>
+            </div>
+            <br>
+
+
+            <button id="show-profile-btn" style="display: none;" onclick="showProfile()" class="btn btn-primary">Open Profile</button>
+            <button id="hide-profile-btn" style="display: none;" onclick="hideProfile()" class="btn btn-primary">Hide Profile</button>
+
+            <!-- PROFILE -->
+            <div id="profile" style="display: none;">
+                <br>
+                <h3> Your Profile </h3> 
+                
+                <h4 id="profile-email"></h4>
+
+                <h4 id="profile-parent-name">Parent Name:</h4>
+                <input type="text" placeholder="FirstName LastName" id="parent_name_field">
+                <button id="submit_profile_btn" onclick="storeParentNameData()" class="btn btn-success">Save Changes</button>
+
+                <h4 id="profile-phone-num">Phone Number:</h4>
+                <input type="text" placeholder="ABC-DEF-GHIJ" id="phone_num_field">
+                <button id="submit_profile_btn" onclick="storePhoneNumData()" class="btn btn-success">Save Changes</button>
+
+            </div>
+            <br>
+
+
+            
+            <div style="display: none;"> <!-- hidden -->
+                <button id="show-children-btn" style="display: none;" onclick="showChildren()" class="w3-btn w3-blue">Open Child List</button>
+                <button id="hide-children-btn" style="display: none;" onclick="hideChildren()" class="w3-btn w3-blue">Hide Child List</button> 
+                
+                <div id="child-list" style="display: none;">
+                    <h3> Your Child List </h3>
+                    <button id="add-new-child-btn" onclick="openChildDropdown()" class="w3-btn w3-blue"> Add New Child </button>
+                    <button id="hide-new-child-btn" onclick="hideChildDropdown()" style="display: none;" class="w3-btn w3-blue"> Cancel </button>
+                    
+                    
+                    <div id="add-child-dropdown" style="display: none;">
+                        <br>
+                        <b>Child's Full Name (FirstName LastName)</b><br>
+                        <input type="text" placeholder="Your Child's Full Name" id="add-child-name" required>
+                        <br><br> 
+                        <b>Child's Date of Birth</b><br>
+                        <input type="date" name="begin" placeholder="dd-mm-yyyy" value="" min="1900-01-01" max="2100-12-31" id="add-child-date-of-birth" required>
+                        <br><br>
+                        <b>Gender</b><br> 
+                        <label for="gender">Child's Gender:</label>
+                        <select name="gender" id="add-child-gender" required>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select> 
+                        <br><br>
+                        <button onclick="addChild()" class="w3-btn w3-blue">Submit</button>
+                    </div>
+
+                    <br>
+                    <br>
+                    <br><br>
+                    <table id="child-list-table"> 
+                        <tr>
+                            <th>Child Name</th>
+                            <th>Birth Date</th>
+                            <th>Gender</th> 
+                            <th>Enrolled Classes</th>
+                            
+                        </tr> 
+                    </table>
+                </div>
+            </div>
+
+
+            <!--
+            <div id="show-class-roster" style="display: none;">
+                
+            </div>
+            -->
+            <br>
+            <div style="display: none;"> <!-- hidden -->
+                <button id="register-classes-btn" style="display: none;" onclick="openClassRegistration()" class="w3-btn w3-blue">Register For Classes</button>
+                <button id="hide-register-classes-btn" onclick="hideClassRegistration()" style="display: none;" class="w3-btn w3-blue"> Cancel </button><br>
+                
+                <div id="class-registration" style="display: none;"> 
+                    <h3> Class Registration </h3>
+
+                    <p>This feature is currently unavailable.</p>
+                    
+                    
+                    <button id="show-regis-example" onclick="showRegisExample()" class="w3-btn w3-blue">Show an Example of Registration</button>
+                    <button id="hide-regis-example" onclick="hideRegisExample()" style="display: none;" class="w3-btn w3-blue">Hide the Example</button>
+                    <p id="regis-example" style="display: none;">Let's say you have a child named 'Bob' and you wanted to register Bob for Chinese Level 1 and AMC 10 Prep Class. First, you should select Bob from the dropdown right below. Then in 'Class 1' you should select 'Chinese Classes' as the category and to the right of that dropdown, select 'Chinese Level 1' as the class. Next, scroll down to 'Class 2', select 'Mathematics Classes' as the category and 'AMC 10 Prep Class' as the class. Finally, scroll down to the 'Submit' button, press it, and press OK in the pop-up to confirm.</p>
+
+                    <br><br>
+                    <label for="student-to-register">Choose Which Child to Register:</label>
+                    <select name="student-to-register" id="student-to-register"></select> 
+                    <br><br>
+
+                    
+
+                    <p><b>Important: </b> It does not matter what order you select your child's classes in. However, make sure you start with Class 1 and go from top to bottom.</p>
+                    
+                    <b><label for="choose-category-1">Class 1:</label></b>
+                    <select name="choose-category-1" id="choose-category-1" onchange="updateChooseClass1();" onfocus="this.selectedIndex = -1"></select>
+                    <label for="choose-class-1"></label>
+                    <select name="choose-class-1" id="choose-class-1" onchange="updateClassSelection1()" onfocus="this.selectedIndex = -1"></select>
+                    <b><p style="font-size: 15px;">Class Hours:</p></b>
+                    <p style="font-size: 15px;" id="time-1">None</p>
+                    <b><p style="font-size: 15px;">Class Days:</p></b>
+                    <p style="font-size: 15px;" id="days-1">None</p>
+                    <b><p style="font-size: 15px;">Cost:</p></b>
+                    <p style="font-size: 15px;" id="cost-1">$0</p>
+                    
+                    <br>
+
+                    <b><label for="choose-category-2">Class 2:</label></b>
+                    <select name="choose-category-2" id="choose-category-2" onchange="updateChooseClass2();" onfocus="this.selectedIndex = -1"></select>
+                    <label for="choose-class-2"></label>
+                    <select name="choose-class-2" id="choose-class-2" onchange="updateClassSelection2()" onfocus="this.selectedIndex = -1"></select>
+                    <b><p style="font-size: 15px;">Class Hours:</p></b>
+                    <p style="font-size: 15px;" id="time-2">None</p> 
+                    <b><p style="font-size: 15px;">Class Days:</p></b>
+                    <p style="font-size: 15px;" id="days-2">None</p>
+                    <b><p style="font-size: 15px;">Cost:</p></b>
+                    <p style="font-size: 15px;" id="cost-2">$0</p>
+                    
+                    <br>
+
+                    <b><label for="choose-category-3">Class 3:</label></b>
+                    <select name="choose-category-3" id="choose-category-3" onchange="updateChooseClass3();" onfocus="this.selectedIndex = -1"></select>
+                    <label for="choose-class-3"></label>
+                    <select name="choose-class-3" id="choose-class-3" onchange="updateClassSelection3()" onfocus="this.selectedIndex = -1"></select>
+                    <b><p style="font-size: 15px;">Class Hours:</p></b>
+                    <p style="font-size: 15px;" id="time-3">None</p>
+                    <b><p style="font-size: 15px;">Class Days:</p></b>
+                    <p style="font-size: 15px;" id="days-3">None</p>
+                    <b><p style="font-size: 15px;">Cost:</p></b>
+                    <p style="font-size: 15px;" id="cost-3">$0</p>
+
+                    <br>
+                    
+                    <b><label for="choose-category-4">Class 4:</label></b>
+                    <select name="choose-category-4" id="choose-category-4" onchange="updateChooseClass4();" onfocus="this.selectedIndex = -1"></select>
+                    <label for="choose-class-4"></label>
+                    <select name="choose-class-4" id="choose-class-4" onchange="updateClassSelection4()" onfocus="this.selectedIndex = -1"></select>
+                    <b><p style="font-size: 15px;">Class Hours:</p></b>
+                    <p style="font-size: 15px;" id="time-4">None</p>
+                    <b><p style="font-size: 15px;">Class Days:</p></b>
+                    <p style="font-size: 15px;" id="days-4">None</p>
+                    <b><p style="font-size: 15px;">Cost:</p></b>
+                    <p style="font-size: 15px;" id="cost-4">$0</p>
+
+                    <br> 
+
+                    <b><label for="choose-category-5">Class 5:</label></b>
+                    <select name="choose-category-5" id="choose-category-5" onchange="updateChooseClass5();" onfocus="this.selectedIndex = -1"></select>
+                    <label for="choose-class-5"></label>
+                    <select name="choose-class-5" id="choose-class-5" onchange="updateClassSelection5()" onfocus="this.selectedIndex = -1"></select>
+                    <b><p style="font-size: 15px;"> Class Hours:</p></b>
+                    <p style="font-size: 15px;" id="time-5">None</p>
+                    <b><p style="font-size: 15px;">Class Days:</p></b>
+                    <p style="font-size: 15px;" id="days-5">None</p>
+                    <b><p style="font-size: 15px;">Cost:</p></b>
+                    <p style="font-size: 15px;" id="cost-5">$0</p>
+
+                    <br>
+
+                    <b><label for="choose-category-6" >Class 6:</label></b>
+                    <select name="choose-category-6" id="choose-category-6" onchange="updateChooseClass6();" onfocus="this.selectedIndex = -1"></select>
+                    <label for="choose-class-6"></label>
+                    <select name="choose-class-6" id="choose-class-6" onchange="updateClassSelection6()" onfocus="this.selectedIndex = -1"></select>
+                    <b><p style="font-size: 15px;">Class Hours:</p></b>
+                    <p style="font-size: 15px;" id="time-6">None</p>
+                    <b><p style="font-size: 15px;">Class Days:</p></b>
+                    <p style="font-size: 15px;" id="days-6">None</p>
+                    <b><p style="font-size: 15px;">Cost:</p></b>
+                    <p style="font-size: 15px;" id="cost-6">$0</p>
+
+                    <br>
+
+                    <b><h3>Total Cost:</h3></b>
+                    <h4 id="total-cost"></h4>
+                    <label for="submit-class-regis-btn">Once you submit, you will not be able to remove your child from the selected classes. You will only be able to add new classes. You will be given one more chance to cancel after pressing submit.</label>
+                    <br><br><button name="submit-class-regis-btn" onclick="submitClassRegistration()" class="w3-btn w3-blue">Submit</button>
+
+                    <br><br>
+                </div> 
+            </div>
+
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+
+    <script src="scripts.js"></script>
+
+</body>
+
+</html>
